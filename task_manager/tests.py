@@ -73,5 +73,7 @@ class LoginMixinTestCase(TestCase):
 
             response = self.client.get(url, follow=True)
             self.assertContains(
-                response, _("You are not logged in! Please log in."), status_code=200
+                response,
+                _("You are not logged in! Please log in."),
+                status_code=200
             )

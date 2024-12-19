@@ -68,11 +68,12 @@ class UserDeleteView(
 
     def delete(self, request, *args, **kwargs):
         self.object = self.get_object()
-        if (
-            Task.objects.filter(author=self.object).exists()
-            or Task.objects.filter(executor=self.object).exists()
-        ):
-            messages.error(request, _("Unable to delete a user because they are in use"))
+        tasks_author = Task.objects.filter(author=self.object)
+        tasks_executor = Task.objects.filter(executor=self.object)
+        if tasks_author.exists() or tasks_executor.exists():
+            messages.error(
+                request, _("Unable to delete a user because they are in use")
+            )
             return redirect(reverse_lazy("users"))
         else:
             return super().delete(request, *args, **kwargs)
