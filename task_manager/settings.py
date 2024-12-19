@@ -34,7 +34,7 @@ DEBUG = os.getenv('DEBUG', False)
 ALLOWED_HOSTS = [
     '*',
     'webserver',
-    '.railway.app'
+    '.railway.app',
 ]
 
 
@@ -52,7 +52,7 @@ INSTALLED_APPS = [
     'task_manager.users',
     'task_manager.statuses',
     'task_manager.tasks',
-    'task_manager.labels'
+    'task_manager.labels',
 ]
 
 MIDDLEWARE = [
@@ -123,16 +123,20 @@ if DATABASE_URL:
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME': 'django.contrib.auth.password_validation.'
+                'UserAttributeSimilarityValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME': 'django.contrib.auth.password_validation.'
+                'MinimumLengthValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation.'
+                'CommonPasswordValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation.'
+                'NumericPasswordValidator',
     },
 ]
 
@@ -158,6 +162,7 @@ USE_I18N = True
 USE_TZ = True
 
 LOCALE_PATH = (os.path.join(BASE_DIR, 'locale'),)
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
@@ -170,12 +175,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 test_english = override_settings(
     LANGUAGE_CODE='en-US',
-    LANGUAGES=(('en', 'English'),),
+    LANGUAGES=(
+        ('en', 'English'),
+    ),
 )
 
 remove_rollbar = modify_settings(
     MIDDLEWARE={
-        'remove':
-            ['rollbar.contrib.django.middleware.RollbarNotifierMiddleware', ]
+        'remove': [
+            'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
+        ],
     }
 )
