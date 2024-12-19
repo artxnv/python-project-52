@@ -1,16 +1,15 @@
-from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
-from django.utils.translation import gettext_lazy as _
-from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
+from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import redirect
+from django.urls import reverse_lazy
+from django.utils.translation import gettext_lazy as _
+from django.views.generic import CreateView, DeleteView, ListView, UpdateView
+
+from task_manager.mixins import MyLoginRequiredMixin, SelfCheckUserMixin
 from task_manager.tasks.models import Task
-from task_manager.mixins import (
-    MyLoginRequiredMixin,
-    SelfCheckUserMixin,
-)
-from .models import MyUser
+
 from .forms import UserCreateForm, UserUpdateForm
+from .models import MyUser
 
 
 class UserListView(ListView):

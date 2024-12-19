@@ -1,11 +1,12 @@
-from django_filters import FilterSet, ModelChoiceFilter, BooleanFilter
 from django import forms
 from django.utils.translation import gettext_lazy as _
+from django_filters import BooleanFilter, FilterSet, ModelChoiceFilter
+
+from task_manager.labels.models import Label
+from task_manager.statuses.models import Status
+from task_manager.users.models import MyUser
 
 from .models import Task
-from task_manager.users.models import MyUser
-from task_manager.statuses.models import Status
-from task_manager.labels.models import Label
 
 
 class TaskFilter(FilterSet):

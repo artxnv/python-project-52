@@ -1,7 +1,9 @@
 from django.test import TestCase
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
+
 from task_manager.helper import load_data
+
 from .models import MyUser as User
 
 

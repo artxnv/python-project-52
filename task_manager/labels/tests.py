@@ -1,9 +1,11 @@
 from django.test import TestCase
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
-from .models import Label
+
 from task_manager.helper import load_data
 from task_manager.users.models import MyUser as User
+
+from .models import Label
 
 
 class LabelsCrudTestCase(TestCase):
